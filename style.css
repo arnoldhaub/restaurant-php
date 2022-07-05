@@ -1,0 +1,36 @@
+#head {
+    background-image: url("img/header5.jpeg");
+    background-position: bottom;
+    min-height: 600px;
+   
+}
+
+body {
+    text-align: center;
+    background-image: url("img/bg.jpg");
+    
+}
+
+/* 
+#menu {
+    background-image: url("img/bgg.jpg");
+    background-position:center;
+    
+}  */
+
+#menu img {
+    height: 50px;
+}
+
+.vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+#carousel .carousel-item img {  
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+    height:600px;
+  }
+  
