@@ -1,5 +1,5 @@
 #head {
-    background-image: url("img/header5.jpeg");
+    background-image: url("/img/header5.jpeg");
     background-position: bottom;
     min-height: 600px;
    
@@ -7,7 +7,7 @@
 
 body {
     text-align: center;
-    background-image: url("img/bg.jpg");
+    background-image: url("/img/bg.jpg");
     
 }
 
