@@ -45,10 +45,10 @@
                 <label class="form-label" for="place">Le restaurant visité</label>
                 <select class="form-control" id="place" name="place" required="required">
                     <option value="">Choisissez un de nos restaurants</option>
-                    <option value="bikini_bottom">Bikini Bottom</option>
-                    <option value="brussels_krusty">Brussels Krusty</option>
-                    <option value="parisian_krab">Parisian Krab</option>
-                    <option value="rusty_krab">The Rusty Krab</option>
+                    <option value="Bikini Bottom">Bikini Bottom</option>
+                    <option value="Brussels Krusty">Brussels Krusty</option>
+                    <option value="Parisian Krab">Parisian Krab</option>
+                    <option value="Rusty Krab">The Rusty Krab</option>
                 </select>
             </div>
             <!-- Date input -->
