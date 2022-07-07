@@ -31,7 +31,7 @@
                 // Taking all 3 values from the form data(input)
                 $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
                 date_default_timezone_set('Europe/Brussels');
-                $date = date('d-m-Y h:i:s');
+                $date = date('Y-m-d h:i:s');
                 $email = filter_var($_POST['emailAddress'], FILTER_SANITIZE_EMAIL);
                 $message =filter_var($_POST['message'], FILTER_SANITIZE_STRING);
                 

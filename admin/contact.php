@@ -1,7 +1,7 @@
 <?php
   require_once("../db.php");
-  $readSql ="SELECT * FROM guest_book";
-  $db = "guest_book";
+  $readSql ="SELECT * FROM contact";
+  $db = "contact";
 
   $res = mysqli_query($conn,$readSql);
 
@@ -25,8 +25,8 @@
         <!-- Place aux recettes !!!  -->
         <div class="jumbotron jumbotron-fluid my-5">
             <div class="container text-center">
-              <h1 class="display-4">Administration - Livre d'or</h1>
-              <p class="lead">Page d'administration du livre d'or.</p>
+              <h1 class="display-4">Administration - Contact</h1>
+              <p class="lead">Page d'administration de la section contact.</p>
             </div>
         </div>
 
@@ -35,7 +35,7 @@
 
         <!-- Wrapper container -->
         <div class="container col-xl-10 py-4">
-        <a href="/guest_book.php">
+        <a href="/contact.php">
              <button class="btn btn-primary" type="">
                 Ajouter un message
             </button>
@@ -46,10 +46,9 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nom</th>
-                    <th>Email</th>
-                    <th>Restaurant</th>
                     <th>Date</th>
+                    <th>Nom</th>
+                    <th>Mail</th>
                     <th>Message</th>
                     <th>Éditer</th>
                     <th>Supprimer</th>
@@ -60,10 +59,9 @@
                 ?>
                 <tr>
                     <th scope="row"><?php echo $i['id']; ?></th>
-                    <td><?php echo $i['name']; ?></td>
-                    <td><?php echo $i['mail']; ?></td>
-                    <td><?php echo $i['place']; ?></td>
                     <td><?php echo $i['date']; ?></td>
+                    <td><?php echo $i['name']; ?></td>
+                    <td><?php echo $i['email']; ?></td>
                     <td><?php echo $i['message']; ?></td>
                     <td>
                         <a href="update.php?id=<?php echo $i['id']; ?>&db=<?php echo $db; ?>" class="m-2">
@@ -82,7 +80,7 @@
                                         <div class="modal-body">
                                             <p>Êtes-vous sûr de vouloir supprimer ? </p>
                                             <div class="modal-footer">
-                                                <a href="guest_book.php">
+                                                <a href="contact.php">
                                                 <button type="button" class="btn btn-primary" data-bas-dismiss="modal">Annuler</button>
                                                 <a href="delete.php?id=<?php echo $i['id']; ?>&db=<?php echo $db; ?>">
                                                 <button class="btn btn-danger" type="button">Confirmer</button>

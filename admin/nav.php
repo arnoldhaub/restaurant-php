@@ -12,7 +12,7 @@
                       <a class="nav-link text-secondary" href="/admin/index.php">Accueil</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-secondary" href="/admin/messages.php">Messages</a>
+                      <a class="nav-link text-secondary" href="/admin/contact.php">Contact</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link text-secondary" href="/admin/guest_book.php">Livre d'or</a>

@@ -3,11 +3,12 @@
 require_once ('../db.php');
 
   $id = $_GET['id'];
-  $DelSql = "DELETE FROM `guest_book` WHERE id=$id";
+  $db = $_GET['db'];
+  $DelSql = "DELETE FROM `$db` WHERE id=$id";
 
   $res = mysqli_query($conn, $DelSql);
   if ($res) {
-    header("Location: guest_book.php");
+    header("Location: $db.php");
   }else{
     echo "Failed to delete";
   }
