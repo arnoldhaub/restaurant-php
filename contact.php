@@ -12,7 +12,6 @@
       <?php include 'nav.php' ?>
         <!--  INTRODUCTION A LA PAGE -->
         
-        <!-- Place aux recettes !!!  -->
         <div class="jumbotron jumbotron-fluid my-5">
             <div class="container text-center">
               <h1 class="display-4">Dites-nous bonjour !</h1>
@@ -21,25 +20,59 @@
         </div>
 
 
-        <hr class="mt-5">
+        <hr class="mt-5"> 
 
-        <!-- Wrapper container -->
+        <!-- WEBSITE - Container -->
         <div class="container col-md-9 py-4">
+          <div class="bg-light text-center text-secondary">
+            <?php
+              if (isset($_POST) & !empty($_POST)) {
+                require_once("db.php");
+                // Taking all 3 values from the form data(input)
+                $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+                date_default_timezone_set('Europe/Brussels');
+                $date = date('d-m-Y h:i:s');
+                $email = filter_var($_POST['emailAddress'], FILTER_SANITIZE_EMAIL);
+                $message =filter_var($_POST['message'], FILTER_SANITIZE_STRING);
+                
+                // Performing insert query execution
+                // here our table name is college
+                $sql = "INSERT INTO contact  VALUES (NULL,'$date','$name',
+                    '$email','$message')";
+                
+                if(mysqli_query($conn, $sql)){
+                    echo "<h3>Merci pour votre message $name !</h3>"
+                        . "<p>On vous répondra le plus rapidement possible ! </p>";
 
-            <!-- Bootstrap 5 starter form -->
-            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    echo nl2br("<h4>Récapitulatif :</h4><p><b>Nom : </b>$name\n <b>Adresse mail :</b> $email\n "
+                        . "<p><b> Votre message : </b>\n$message</p>");
+
+                        $buttonStatut = true;
+                } else{
+                    echo "ERROR: Hush! Sorry $sql. "
+                        . mysqli_error($conn);
+                }
+                
+                // Close connection
+                mysqli_close($conn);
+                }
+            ?>
+          </div>
+
+            <!-- CONTACT - FORM-->
+            <form id="contactForm" action="" method="post">
         
             <!-- Name input -->
             <div class="mb-3">
                 <label class="form-label" for="name">Votre prénom</label>
-                <input class="form-control" id="name" type="text" placeholder="Prénom et nom" data-sb-validations="required" />
+                <input class="form-control" id="name" name="name" type="text" placeholder="Prénom et nom" required="required" />
                 <div class="invalid-feedback" data-sb-feedback="name:required">Vous avez oublié d'entrer votre nom et votre prénom.</div>
             </div>
         
             <!-- Email address input -->
             <div class="mb-3">
                 <label class="form-label" for="emailAddress">Votre adresse mail</label>
-                <input class="form-control" id="emailAddress" type="email" placeholder="Adresse mail" data-sb-validations="required, email" />
+                <input class="form-control" id="emailAddress" name="emailAddress" type="email" placeholder="Adresse mail" required="required" />
                 <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Vous avez oublié d'entrer votre adresse mail.</div>
                 <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Votre adresse n'est pas valide. :(</div>
             </div>
@@ -47,23 +80,14 @@
             <!-- Message input -->
             <div class="mb-3">
                 <label class="form-label" for="message">Votre message</label>
-                <textarea class="form-control" id="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations="required"></textarea>
+                <textarea class="form-control" id="message" name="message" type="text" placeholder="Message" style="height: 10rem;" required="required"></textarea>
                 <div class="invalid-feedback" data-sb-feedback="message:required">Vous avez oublié d'écrire votre message.</div>
             </div>
         
-            <!-- Form submissions success message -->
-            <div class="d-none" id="submitSuccessMessage">
-                <div class="text-center mb-3">Votre message a bien été envoyé ! Merci pour vos mots !</div>
-            </div>
-        
-            <!-- Form submissions error message -->
-            <div class="d-none" id="submitErrorMessage">
-                <div class="text-center text-danger mb-3">Une erreur s'est glissée. Rééssayer pour voir ? :)</div>
-            </div>
         
             <!-- Form submit button -->
             <div class="d-grid">
-                <button class="btn btn-danger text-white btn-lg disabled" id="submitButton" type="submit">Envoyez</button>
+                <button class="btn btn-danger text-white btn-lg <?php if ($buttonStatut == true) echo'disabled'; ?>" id="submitButton" type="submit">Envoyez</button>
             </div>
         
             </form>
