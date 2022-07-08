@@ -10,29 +10,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Le Crabe Croustillant- Contact.</title>
-    <link rel="stylesheet" href="/style.css">
-    
+    <link rel="stylesheet" href="/admin/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>    
-      <style type="text/css">
-    .gallery
-    {
-        display: inline-block;
-        margin-top: 20px;
-    }
-    .close-icon{
-    border-radius: 50%;
-        position: absolute;
-        right: 5px;
-        top: -10px;
-        padding: 5px 8px;
-    }
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
+    <style>
         .form-image-upload{
-            background: #e8e8e8 none repeat scroll 0 0;
+            background: #e8e8e8 ;
             padding: 15px;
-        }
-        
+            margin:auto;
+            }    
     </style>
   </head>
   <body>
@@ -72,52 +59,23 @@
         <?php unset($_SESSION['success']); } ?>
 
 
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-md-5">
                 <strong>Titre :</strong>
-                <input type="text" name="title" class="form-control" placeholder="Nom de l'image">
+                <input type="text" name="name" class="form-control" placeholder="Nom de l'image">
             </div>
             <div class="col-md-5">
                 <strong>Image :</strong>
                 <input type="file" name="image" class="form-control">
             </div>
             <div class="col-md-2 ">
-                <br/>
+                <br>
                 <button type="submit" class="btn btn-danger text-white btn-lg">Envoyez</button>
             </div>
         </div>
     </form> 
 
     <!-- Affichage images -->
-
-    <div class="row">
-    <div class='list-group gallery'>
-
-
-            <?php
-            $images = $conn->query($sql);
-            while($image = $images->fetch_assoc()){
-
-            ?>
-                <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                    <a class="thumbnail fancybox" rel="ligthbox" href="/upload/<?php echo $image['image'] ?>">
-                        <img class="img-responsive" alt="" src="/upload/<?php echo $image['image'] ?>" />
-                        <div class='text-center'>
-                            <small class='text-muted'><?php echo $image['name'] ?></small>
-                        </div> <!-- text-center / end -->
-                    </a>
-                    <form action="/imageDelete.php" method="POST">
-                    <input type="hidden" name="id" value="<?php echo $image['id'] ?>">
-                    <button type="submit" class="close-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
-                    </form>
-                </div> <!-- col-6 / end -->
-            <?php } ?>
-
-
-        </div> <!-- list-group / end -->
-    </div> <!-- row / end -->
-</div> <!-- container / end -->
-
 
         <table class="table table-striped my-3 text-center">
             <thead>
@@ -160,7 +118,7 @@
                                         <div class="modal-body">
                                             <p>Êtes-vous sûr de vouloir supprimer ? </p>
                                             <div class="modal-footer">
-                                                <a href="contact.php">
+                                                <a href="<?php echo $db; ?>.php">
                                                 <button type="button" class="btn btn-primary" data-bas-dismiss="modal">Annuler</button>
                                                 <a href="delete.php?id=<?php echo $i['id']; ?>&db=<?php echo $db; ?>">
                                                 <button class="btn btn-danger" type="button">Confirmer</button>

@@ -26,7 +26,7 @@
         <!-- Wrapper container -->
         <div class="container col-md-9 py-4">
 
-            <p>text</p>
+            <p>Bienvenue sur la page d'administration du site, regarde sur le menu du haut pour naviguer jusqu'à la partie qui t'intéresse !</p>
 
     </div>
     

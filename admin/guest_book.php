@@ -82,7 +82,7 @@
                                         <div class="modal-body">
                                             <p>Êtes-vous sûr de vouloir supprimer ? </p>
                                             <div class="modal-footer">
-                                                <a href="guest_book.php">
+                                                <a href="<?php echo $db; ?>.php">
                                                 <button type="button" class="btn btn-primary" data-bas-dismiss="modal">Annuler</button>
                                                 <a href="delete.php?id=<?php echo $i['id']; ?>&db=<?php echo $db; ?>">
                                                 <button class="btn btn-danger" type="button">Confirmer</button>
