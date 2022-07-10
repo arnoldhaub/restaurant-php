@@ -42,7 +42,7 @@
         </a>
 
 
-        <table class="table table-striped my-3 text-center">
+        <table class="table table-striped my-3 text-center align-items-center">
             <thead>
                 <tr>
                     <th>ID</th>
